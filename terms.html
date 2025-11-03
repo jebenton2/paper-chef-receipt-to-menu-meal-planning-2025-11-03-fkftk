@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paper Chef - Transform your grocery receipt into a ready-to-cook 7-day meal plan using AI-powered OCR and chef-curated recipes.">
+    <meta name="keywords" content="meal planning, recipes, grocery receipt, AI, meal prep, cooking">
+    <meta name="author" content="Paper Chef">
+    <title>Terms of Service - Paper Chef</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        
+        .feature-card {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-image {
+            transition: transform 400ms ease-out;
+        }
+        
+        .benefit-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .faq-item {
+            transition: all 300ms ease-out;
+        }
+        
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            opacity: 1;
+        }
+        
+        .faq-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 300ms ease-out;
+        }
+        
+        .testimonial-card {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            transition: all 300ms ease-out;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        
+        .nav-link {
+            transition: color 300ms ease-out;
+        }
+        
+        .nav-link:hover {
+            color: #2563eb;
+        }
+        
+        .mobile-menu {
+            transition: all 300ms ease-out;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .header-sticky {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    
+    <!-- Announcement Bar -->
+    <div class="bg-blue-600 text-white py-3 px-4 text-center text-sm md:text-base">
+        <i class="fas fa-shipping-fast mr-2"></i>Fast Worldwide Shipping (5 days delivery) • 100% Satisfaction Guarantee
+    </div>
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white header-sticky">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center justify-between w-full">
+                <!-- Logo -->
+                <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk" class="flex items-center gap-2">
+                    <i class="fas fa-receipt text-2xl text-blue-600"></i>
+                    <span class="text-xl font-bold text-gray-900">Paper Chef</span>
+                </a>
+                
+                <!-- Back Link -->
+                <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk" class="nav-link text-gray-700 font-medium hover:text-blue-600">
+                    ← Back
+                </a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Terms of Service Hero Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
+                Terms of Service
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600">
+                Last updated: <span id="lastUpdated">January 2024</span>
+            </p>
+        </div>
+    </section>
+    
+    <!-- Terms of Service Content -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Introduction Section -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Introduction</h2>
+                <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                        Welcome to Paper Chef ("Company," "we," "us," "our," or "the Service"). These Terms of Service ("Terms") govern your access to and use of the Paper Chef website, mobile application, and all related services and content (collectively, the "Service").
+                    </p>
+                    <p>
+                        By accessing, browsing, or using Paper Chef, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree with any part of these Terms, you must not use the Service. Your continued use of Paper Chef following any changes to these Terms constitutes your acceptance of the revised Terms.
+                    </p>
+                    <p>
+                        Paper Chef is committed to providing you with the best possible meal planning experience. Our Service combines advanced artificial intelligence technology with chef-curated recipes to help you create personalized meal plans based on your grocery receipts and pantry inventory. These Terms establish the legal framework for your use of our Service and protect the rights and responsibilities of both you and Paper Chef.
+                    </p>
+                    <p>
+                        If you have any questions about these Terms or our Service, please contact us at hello@thepaperchef.com. We encourage you to review these Terms periodically, as we may update them from time to time to reflect changes in our Service or applicable laws.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- User Agreements Section -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">User Agreements and Eligibility</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Age and Legal Capacity</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            By using Paper Chef, you represent and warrant that you are at least 18 years of age or the age of majority in your jurisdiction, whichever is greater. If you are under the age of majority, you may only use the Service with the express permission and supervision of a parent or legal guardian who agrees to be bound by these Terms. We reserve the right to verify your age and may request identification to confirm your eligibility to use the Service.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Account Registration</h3>
+                        <p class="text-gray-700 leading-relaxed mb-3">
+                            To access certain features of Paper Chef, you may be required to create an account. When creating an account, you agree to:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-2">
+                            <li>Provide accurate, complete, and current information about yourself</li>
+                            <li>Maintain the confidentiality of your account credentials and password</li>
+                            <li>Accept responsibility for all activities that occur under your account</li>
+                            <li>Notify us immediately of any unauthorized use of your account</li>
+                            <li>Not share your account with others or allow others to use your credentials</li>
+                            <li>Update your account information promptly if any details change</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">User Conduct</h3>
+                        <p class="text-gray-700 leading-relaxed mb-3">
+                            You agree to use Paper Chef only for lawful purposes and in a way that does not infringe upon the rights of others or restrict their use and enjoyment of the Service. Prohibited behavior includes:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-2">
+                            <li>Harassing or causing distress or inconvenience to any person</li>
+                            <li>Obscene or offensive language or conduct</li>
+                            <li>Disrupting the normal flow of dialogue within the Service</li>
+                            <li>Attempting to gain unauthorized access to our systems</li>
+                            <li>Transmitting obscene or offensive content</li>
+                            <li>Disrupting the normal flow and functionality of the Service</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Acceptable Use Section -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Acceptable Use Policy</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Permitted Use</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            You agree to use Paper Chef solely for personal, non-commercial purposes in accordance with these Terms and all applicable laws and regulations. You may use the Service to create meal plans, access recipes, upload and process grocery receipts, track your pantry inventory, and manage your dietary preferences. Any other use of the Service is strictly prohibited.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Prohibited Activities</h3>
+                        <p class="text-gray-700 leading-relaxed mb-3">
+                            You agree not to engage in any of the following prohibited activities:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-2">
+                            <li>Reproducing, distributing, or transmitting any content without authorization</li>
+                            <li>Attempting to reverse engineer, decompile, or discover source code or algorithms</li>
+                            <li>Removing or altering any copyright, trademark, or proprietary notices</li>
+                            <li>Uploading viruses, malware, or any other malicious code</li>
+                            <li>Using automated tools or scripts to access the Service without permission</li>
+                            <li>Attempting to interfere with or disrupt the Service or its infrastructure</li>
+                            <li>Collecting or harvesting personal information about other users</li>
+                            <li>Using the Service for commercial purposes without authorization</li>
+                            <li>Impersonating any person or entity or misrepresenting your affiliation</li>
+                            <li>Violating any applicable laws or regulations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Intellectual Property Rights</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            All content on Paper Chef, including but not limited to recipes, photographs, text, graphics, logos, and software, is the property of Paper Chef or its content suppliers and is protected by international copyright laws. You may not reproduce, distribute, transmit, or display any content from the Service without our prior written permission. Unauthorized use of any content may violate copyright, trademark, and other applicable laws and could result in criminal or civil penalties.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Limitation of Liability Section -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Limitation of Liability</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Disclaimer of Warranties</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Paper Chef is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied. We disclaim all warranties, including but not limited to implied warranties of merchantability, fitness for a particular purpose, title, and non-infringement. We do not warrant that the Service will be uninterrupted, error-free, secure, or free from viruses or other harmful components. Your use of the Service is at your own risk.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Limitation of Damages</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            To the fullest extent permitted by applicable law, in no event shall Paper Chef, its directors, employees, or agents be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to damages for loss of profits, goodwill, use, data, or other intangible losses, even if we have been advised of the possibility of such damages. Our total liability for any claim arising out of or relating to these Terms or the Service shall not exceed the amount you paid to Paper Chef in the twelve months preceding the claim.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Assumption of Risk</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            You assume all risk associated with your use of Paper Chef. This includes, but is not limited to, the risk that recipes or meal plans may not meet your dietary needs, allergies, or preferences. While we strive to provide accurate information and high-quality recipes, we cannot guarantee that all information is complete or error-free. You are responsible for consulting with healthcare professionals regarding dietary concerns or allergies before preparing any recipes from our Service.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Third-Party Links and Content</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Paper Chef may contain links to third-party websites and services that are not operated by us. We are not responsible for the content, accuracy, or practices of these third-party sites. Your use of third-party websites is governed by their terms and policies, not by these Terms. We encourage you to review the terms and privacy policies of any third-party sites before providing personal information or making purchases.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment and Subscription Section -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Payment and Subscription Terms</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Subscription Plans</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Paper Chef offers various subscription plans with different features and pricing. When you purchase a subscription, you authorize us to charge your payment method on a recurring basis according to the plan you select. All prices are in US dollars unless otherwise specified and are subject to change with thirty (30) days' notice. We will notify you of any price changes by email or through the Service.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Billing and Renewal</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Your subscription will automatically renew at the end of each billing period unless you cancel before the renewal date. You are responsible for keeping your payment information current and accurate. If a payment fails, we will attempt to collect the payment again, and if unsuccessful, we may suspend or terminate your access to the Service.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Cancellation and Refunds</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            You may cancel your subscription at any time by logging into your account or contacting us at hello@thepaperchef.com. Cancellation will take effect at the end of your current billing period. We offer a 30-day money-back guarantee for new subscribers. Refund requests must be made within thirty (30) days of your initial purchase. After the 30-day period, no refunds will be issued, but you may continue to use your subscription until the end of your billing period.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Privacy and Data Section -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Privacy and Data Protection</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Data Collection and Use</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Your use of Paper Chef is also governed by our Privacy Policy, which is incorporated into these Terms by reference. We collect and process personal information as described in our Privacy Policy. By using the Service, you consent to the collection and use of your information as described in our Privacy Policy. We are committed to protecting your privacy and maintaining the security of your personal information.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Receipt Information</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            When you upload grocery receipts to Paper Chef, we process the receipt images using our OCR technology to extract item information. Receipt images are stored securely and are used solely to provide you with personalized meal planning recommendations. You may delete your receipt history at any time. We do not share your receipt information with third parties except as necessary to provide the Service or as required by law.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Security</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            We implement industry-standard security measures to protect your personal information, including encryption, firewalls, and secure servers. However, no method of transmission over the internet or electronic storage is completely secure. While we strive to protect your information, we cannot guarantee absolute security. You are responsible for maintaining the confidentiality of your account credentials and for any activity that occurs under your account.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modifications to Service Section -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Modifications to the Service</h2>
+                <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                        Paper Chef reserves the right to modify, suspend, or discontinue the Service or any portion thereof at any time, with or without notice. We may add, remove, or modify features, functionality, or content at our sole discretion. We will not be liable to you for any modification, suspension, or discontinuation of the Service or any features or content thereof. Your continued use of the Service following any changes constitutes your acceptance of such changes.
+                    </p>
+                    <p>
+                        We may also modify these Terms of Service at any time by posting the revised Terms on the Service. Your continued use of Paper Chef following any modifications to these Terms constitutes your acceptance of the revised Terms. We encourage you to review these Terms periodically to stay informed of any changes.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Termination Section -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Termination of Use</h2>
+                <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                        We reserve the right to terminate or suspend your access to Paper Chef at any time, with or without cause, and with or without notice. Reasons for termination may include, but are not limited to: violation of these Terms, violation of applicable laws, abusive behavior, or any other reason at our sole discretion. Upon termination, your right to use the Service will immediately cease.
+                    </p>
+                    <p>
+                        You may terminate your use of Paper Chef at any time by ceasing to access the Service and canceling your subscription if applicable. Upon termination, we may delete your account and associated data in accordance with our data retention policies. Certain provisions of these Terms, including limitations of liability and intellectual property rights, will survive termination.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Governing Law Section -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Governing Law and Dispute Resolution</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Governing Law</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            These Terms of Service and your use of Paper Chef are governed by and construed in accordance with the laws of the State of California, United States, without regard to its conflict of law principles. Any legal action or proceeding arising out of or relating to these Terms or the Service shall be subject to the exclusive jurisdiction of the state and federal courts located in San Francisco, California.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Dispute Resolution</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Before initiating any legal proceedings, we encourage you to contact us at hello@thepaperchef.com to attempt to resolve any disputes informally. If informal resolution is unsuccessful, you agree that any dispute arising out of or relating to these Terms or the Service shall be resolved through binding arbitration in accordance with the rules of the American Arbitration Association, rather than in court. The arbitration shall be conducted in San Francisco, California, and shall be governed by the laws of the State of California.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Information Section -->
+            <div class="mb-16 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 md:p-12 border border-blue-200">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Contact Information</h2>
+                <div class="space-y-6">
+                    <p class="text-gray-700 leading-relaxed">
+                        If you have any questions, concerns, or disputes regarding these Terms of Service or Paper Chef, please contact us using the information below. We will make every effort to respond to your inquiry within 24 hours.
+                    </p>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Email</h3>
+                            <a href="mailto:hello@thepaperchef.com" class="text-blue-600 hover:text-blue-700 transition-colors duration-300 font-medium">
+                                hello@thepaperchef.com
+                            </a>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Mailing Address</h3>
+                            <p class="text-gray-700">
+                                Paper Chef<br>
+                                San Francisco, CA<br>
+                                United States
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">Response Time</h3>
+                            <p class="text-gray-700">
+                                We typically respond to inquiries within 24 hours during business days.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Entire Agreement Section -->
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Entire Agreement</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    These Terms of Service, together with our Privacy Policy and any other policies or guidelines published on Paper Chef, constitute the entire agreement between you and Paper Chef regarding your use of the Service and supersede all prior and contemporaneous agreements, understandings, and negotiations, whether written or oral. If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect, and the invalid provision shall be modified to the minimum extent necessary to make it valid and enforceable.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-receipt text-2xl text-blue-500"></i>
+                        <span class="text-xl font-bold text-white">Paper Chef</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Transform your grocery receipts into ready-to-cook meal plans with AI-powered technology and chef-curated recipes.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Home</a>
+                        </li>
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#features" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Features</a>
+                        </li>
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#benefits" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Benefits</a>
+                        </li>
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#about" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">About Us</a>
+                        </li>
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#testimonials" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Testimonials</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Support</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#faq" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#contact" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="https://blog.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Blog</a>
+                        </li>
+                        <li>
+                            <a href="privacy.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="terms.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <p class="text-gray-400">Email:</p>
+                            <a href="mailto:hello@thepaperchef.com" class="text-blue-500 hover:text-blue-400 transition-colors duration-300">
+                                hello@thepaperchef.com
+                            </a>
+                        </li>
+                        <li>
+                            <p class="text-gray-400">Location:</p>
+                            <p class="text-gray-300">San Francisco, CA, USA</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm">
+                        &copy; <span id="year">2024</span> Paper Chef. All rights reserved.
+                    </p>
+                    <div class="flex gap-6 text-sm">
+                        <a href="privacy.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Privacy Policy</a>
+                        <a href="terms.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Terms of Service</a>
+                        <a href="blog.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Update year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Update last updated date
+        const lastUpdatedElement = document.getElementById('lastUpdated');
+        const currentDate = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        lastUpdatedElement.textContent = currentDate.toLocaleDateString('en-US', options);
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
