@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paper Chef Blog - Transform your grocery receipt into a ready-to-cook 7-day meal plan using AI-powered OCR and chef-curated recipes.">
+    <meta name="keywords" content="meal planning, recipes, grocery receipt, AI, meal prep, cooking, blog">
+    <meta name="author" content="Paper Chef">
+    <title>Paper Chef Blog - Receipt-to-Menu Meal Planning Tips & Guides</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        
+        .feature-card {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-image {
+            transition: transform 400ms ease-out;
+        }
+        
+        .benefit-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .faq-item {
+            transition: all 300ms ease-out;
+        }
+        
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            opacity: 1;
+        }
+        
+        .faq-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 300ms ease-out;
+        }
+        
+        .testimonial-card {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            transition: all 300ms ease-out;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        
+        .nav-link {
+            transition: color 300ms ease-out;
+        }
+        
+        .nav-link:hover {
+            color: #2563eb;
+        }
+        
+        .mobile-menu {
+            transition: all 300ms ease-out;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .header-sticky {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .blog-card {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    
+    <!-- Announcement Bar -->
+    <div class="bg-blue-600 text-white py-3 px-4 text-center text-sm md:text-base">
+        <i class="fas fa-shipping-fast mr-2"></i>Fast Worldwide Shipping (5 days delivery) • 100% Satisfaction Guarantee
+    </div>
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white header-sticky">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk" class="flex items-center gap-2">
+                <i class="fas fa-receipt text-2xl text-blue-600"></i>
+                <span class="text-xl font-bold text-gray-900">Paper Chef</span>
+            </a>
+            
+            <!-- Back Link -->
+            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk" class="nav-link text-gray-700 font-medium hover:text-blue-600">
+                ← Back
+            </a>
+        </nav>
+    </header>
+    
+    <!-- Blog Header Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Our Blog
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Discover insights, tips, and guides to transform your meal planning journey. From mastering AI-powered recipe suggestions to reducing food waste, our blog features expert advice, user success stories, and culinary inspiration to help you make the most of Paper Chef and elevate your cooking experience.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Blog Post -->
+    <section class="py-8 md:py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">Latest Post</h2>
+                
+                <div class="blog-card bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-200 overflow-hidden">
+                    <div class="p-8 md:p-12">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">Featured</span>
+                            <span class="text-gray-500 text-sm font-medium">November 3, 2025</span>
+                        </div>
+                        
+                        <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                            Getting Started with Our Platform
+                        </h3>
+                        
+                        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                            Paper Chef revolutionizes meal planning by transforming grocery receipts into personalized 7-day meal plans using AI-powered OCR technology. The system combines advanced optical character recognition with machine learning algorithms and chef-curated recipes to create intelligent, customized meal plans. With 99.2% accuracy, the technology understands context and dietary preferences while minimizing food waste. Users report saving $200 monthly and reducing waste by 35-40%. The platform prioritizes recipes using purchased ingredients, balances variety, and sequences meals efficiently. By integrating AI efficiency with professional culinary expertise, Paper Chef makes cooking accessible, sustainable, and personalized for every home cook.
+                        </p>
+                        
+                        <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk/blog/getting-started-with-our-platform.html" class="btn-primary inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transform transition-all duration-300">
+                            Read Full Article
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog Posts Grid -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-12">More Articles</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Empty Blog Card 1 -->
+                <div class="blog-card bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-200 overflow-hidden h-96 flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <i class="fas fa-pencil-alt text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-400 font-medium">Coming Soon</p>
+                    </div>
+                </div>
+                
+                <!-- Empty Blog Card 2 -->
+                <div class="blog-card bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-200 overflow-hidden h-96 flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <i class="fas fa-pencil-alt text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-400 font-medium">Coming Soon</p>
+                    </div>
+                </div>
+                
+                <!-- Empty Blog Card 3 -->
+                <div class="blog-card bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-200 overflow-hidden h-96 flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <i class="fas fa-pencil-alt text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-400 font-medium">Coming Soon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 bg-blue-600 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1600&h=900&fit=crop&q=80" alt="Ready to get started" class="w-full h-full object-cover opacity-20">
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
+                Ready to Transform Your Cooking?
+            </h2>
+            <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Join thousands of home cooks who are saving time, reducing waste, and discovering amazing recipes with Paper Chef.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://stripe.com/checkout" class="btn-primary bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transform transition-all duration-300 shadow-lg">
+                    Start Your Free Trial
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <button class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg font-bold text-lg transform transition-all duration-300">
+                    Schedule a Demo
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-receipt text-2xl text-blue-500"></i>
+                        <span class="text-xl font-bold text-white">Paper Chef</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Transform your grocery receipts into ready-to-cook meal plans with AI-powered technology and chef-curated recipes.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Home</a>
+                        </li>
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#features" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Features</a>
+                        </li>
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#benefits" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Benefits</a>
+                        </li>
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#about" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">About Us</a>
+                        </li>
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#testimonials" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Testimonials</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Support</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#faq" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="https://jebenton2.github.io/paper-chef-receipt-to-menu-meal-planning-2025-11-03-fkftk#contact" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="blog.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Blog</a>
+                        </li>
+                        <li>
+                            <a href="privacy.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="terms.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <p class="text-gray-400">Email:</p>
+                            <a href="mailto:hello@thepaperchef.com" class="text-blue-500 hover:text-blue-400 transition-colors duration-300">
+                                hello@thepaperchef.com
+                            </a>
+                        </li>
+                        <li>
+                            <p class="text-gray-400">Location:</p>
+                            <p class="text-gray-300">San Francisco, CA, USA</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm">
+                        &copy; <span id="year">2024</span> Paper Chef. All rights reserved.
+                    </p>
+                    <div class="flex gap-6 text-sm">
+                        <a href="privacy.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Privacy Policy</a>
+                        <a href="terms.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Terms of Service</a>
+                        <a href="blog.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Update year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.blog-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
