@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paper Chef - Transform your grocery receipt into a ready-to-cook 7-day meal plan using AI-powered OCR and chef-curated recipes.">
+    <meta name="keywords" content="meal planning, recipes, grocery receipt, AI, meal prep, cooking">
+    <meta name="author" content="Paper Chef">
+    <title>Paper Chef - Receipt-to-Menu Meal Planning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        
+        .feature-card {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-image {
+            transition: transform 400ms ease-out;
+        }
+        
+        .benefit-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .faq-item {
+            transition: all 300ms ease-out;
+        }
+        
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            opacity: 1;
+        }
+        
+        .faq-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 300ms ease-out;
+        }
+        
+        .testimonial-card {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            transition: all 300ms ease-out;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        
+        .nav-link {
+            transition: color 300ms ease-out;
+        }
+        
+        .nav-link:hover {
+            color: #2563eb;
+        }
+        
+        .mobile-menu {
+            transition: all 300ms ease-out;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .header-sticky {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    
+    <!-- Announcement Bar -->
+    <div class="bg-blue-600 text-white py-3 px-4 text-center text-sm md:text-base">
+        <i class="fas fa-shipping-fast mr-2"></i>Fast Worldwide Shipping (5 days delivery) • 100% Satisfaction Guarantee
+    </div>
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white header-sticky">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <i class="fas fa-receipt text-2xl text-blue-600"></i>
+                <span class="text-xl font-bold text-gray-900">Paper Chef</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="nav-link text-gray-700 font-medium hover:text-blue-600">Home</a>
+                <a href="#features" class="nav-link text-gray-700 font-medium hover:text-blue-600">Features</a>
+                <a href="#benefits" class="nav-link text-gray-700 font-medium hover:text-blue-600">Benefits</a>
+                <a href="#about" class="nav-link text-gray-700 font-medium hover:text-blue-600">About</a>
+                <a href="#testimonials" class="nav-link text-gray-700 font-medium hover:text-blue-600">Testimonials</a>
+                <a href="#faq" class="nav-link text-gray-700 font-medium hover:text-blue-600">FAQ</a>
+                <a href="#contact" class="nav-link text-gray-700 font-medium hover:text-blue-600">Contact</a>
+            </div>
+            
+            <!-- Search and CTA -->
+            <div class="hidden md:flex items-center gap-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search..." class="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-40">
+                    <i class="fas fa-search absolute right-3 top-3 text-gray-500"></i>
+                </div>
+                <a href="https://stripe.com/checkout" class="btn-primary bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transform transition-all duration-300">
+                    Buy Now
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-button md:hidden text-gray-900 text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-4">
+                <a href="#home" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Home</a>
+                <a href="#features" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Features</a>
+                <a href="#benefits" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Benefits</a>
+                <a href="#about" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">About</a>
+                <a href="#testimonials" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Testimonials</a>
+                <a href="#faq" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">FAQ</a>
+                <a href="#contact" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Contact</a>
+                <div class="relative pt-2">
+                    <input type="text" placeholder="Search..." class="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                    <i class="fas fa-search absolute right-3 top-5 text-gray-500"></i>
+                </div>
+                <a href="https://stripe.com/checkout" class="btn-primary bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transform transition-all duration-300 text-center">
+                    Buy Now
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen md:h-96 lg:h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1504093376055-b3094b674dcb?w=1600&h=900&fit=crop&q=80" alt="Fresh groceries and meal planning" class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
+                Paper Chef receipt-to-menu meal planning
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed">
+                Grocery receipt + your pantry = ready-to-cook 7-day plan
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://stripe.com/checkout" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transform transition-all duration-300 shadow-lg">
+                    Get Started Now
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <button class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transform transition-all duration-300">
+                    Watch Demo
+                    <i class="fas fa-play ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Powerful Features Built for You
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    Transform the way you plan meals with our intelligent, chef-curated platform
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-xl">
+                    <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg mb-6">
+                        <i class="fas fa-camera text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Receipt-to-Menu OCR</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Simply snap a photo of your grocery receipt. Our advanced OCR technology instantly recognizes every item and creates a personalized meal plan from what you already have.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-xl">
+                    <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg mb-6">
+                        <i class="fas fa-chef-hat text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Chef-Curated Recipes</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Every recipe is carefully selected and tested by professional chefs. Enjoy restaurant-quality meals at home with clear instructions and beautiful food photography.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-xl">
+                    <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg mb-6">
+                        <i class="fas fa-calendar-check text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Smart 7-Day Menu</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Get a complete week of meal plans automatically organized by difficulty level, prep time, and nutrition. Easily swap recipes or adjust portions to fit your needs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Why Choose Paper Chef?
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    Experience the benefits that thousands of home cooks already enjoy
+                </p>
+            </div>
+            
+            <!-- Benefit 1: Simplify Shopping -->
+            <div class="mb-16 md:mb-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <img src="https://images.unsplash.com/photo-1556740714-a8395b3bf30f?w=800&h=600&fit=crop&q=80" alt="Simplified shopping experience" class="benefit-image rounded-xl shadow-lg w-full h-auto object-cover">
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Simplify Shopping</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                            No more wandering aisles wondering what to cook. Paper Chef analyzes your receipt and pantry inventory to suggest meals you can actually make. Reduce food waste by 40% and shop smarter with AI-powered suggestions that match your ingredients perfectly.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                <span class="text-gray-700">Automatic ingredient recognition</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                <span class="text-gray-700">Real-time pantry tracking</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                <span class="text-gray-700">Smart shopping lists</span>
+                            </li>
+                        </ul>
+                        <a href="https://stripe.com/checkout" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold transform transition-all duration-300 inline-block">
+                            Start Simplifying Today
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Benefit 2: Discover Recipes -->
+            <div class="mb-16 md:mb-24 bg-white rounded-xl p-8 md:p-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Discover Recipes</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                            Unlock a world of culinary possibilities with our extensive recipe library. From quick weeknight dinners to impressive weekend dishes, every recipe is crafted by professional chefs and tested for home kitchens. Get inspired with personalized recommendations based on your ingredients and dietary preferences.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                <span class="text-gray-700">5,000+ chef-curated recipes</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                <span class="text-gray-700">Dietary filters and preferences</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                <span class="text-gray-700">Video cooking tutorials</span>
+                            </li>
+                        </ul>
+                        <a href="https://stripe.com/checkout" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold transform transition-all duration-300 inline-block">
+                            Explore Recipes Now
+                        </a>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?w=800&h=600&fit=crop&q=80" alt="Discover amazing recipes" class="benefit-image rounded-xl shadow-lg w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Benefit 3: Save Planning Time -->
+            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <img src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=800&h=600&fit=crop&q=80" alt="Save time on meal planning" class="benefit-image rounded-xl shadow-lg w-full h-auto object-cover">
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Save Planning Time</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                            Stop spending hours planning weekly meals. Paper Chef generates a complete 7-day meal plan in seconds, complete with shopping lists, prep schedules, and cooking instructions. Reclaim 5+ hours per week and spend more time enjoying your meals instead of planning them.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                <span class="text-gray-700">Instant meal plan generation</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                <span class="text-gray-700">Automated prep schedules</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                <span class="text-gray-700">One-click shopping lists</span>
+                            </li>
+                        </ul>
+                        <a href="https://stripe.com/checkout" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold transform transition-all duration-300 inline-block">
+                            Start Saving Time
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Us Section -->
+    <section id="about" class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    About Paper Chef
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Transforming home cooking through intelligent meal planning
+                </p>
+            </div>
+            
+            <div class="space-y-8">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 md:p-12 border border-blue-200">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Story</h3>
+                    <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                        Paper Chef was born from a simple frustration: the endless cycle of meal planning, grocery shopping, and wondering what to cook with ingredients already at home. Founded in 2020 by a team of food technologists, professional chefs, and AI researchers, we set out to solve this universal problem. After years of development and testing with thousands of home cooks, we created a platform that understands your ingredients, knows what tastes great, and creates personalized meal plans in seconds. Today, Paper Chef serves over 100,000 users worldwide, helping families save time, reduce food waste, and discover new favorite recipes.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        What started as a passion project in a small kitchen has grown into a mission to revolutionize how people approach cooking and meal planning. We've partnered with Michelin-starred chefs to curate our recipe collection, invested in cutting-edge AI technology to perfect our OCR capabilities, and built a community of food enthusiasts who believe cooking should be joyful, not stressful.
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-8 md:p-12 border border-indigo-200">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission & Values</h3>
+                    <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                        At Paper Chef, our mission is simple: to make cooking accessible, enjoyable, and sustainable for everyone. We believe that great meals shouldn't require hours of planning or shopping at multiple stores. We're committed to reducing food waste, promoting healthier eating habits, and helping people discover the joy of cooking with ingredients they already have. Our core values—innovation, sustainability, and community—guide every decision we make, from the recipes we feature to the technology we develop.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        We envision a world where every home cook has access to personalized meal planning powered by AI and inspired by professional chefs. By combining technology with culinary expertise, we're building a platform that grows smarter with every meal you cook, every recipe you try, and every preference you share. Join us in our mission to transform the way the world cooks.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="text-center">
+                    <div class="text-4xl font-bold gradient-text mb-2">100K+</div>
+                    <p class="text-gray-600">Active Users</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold gradient-text mb-2">5K+</div>
+                    <p class="text-gray-600">Chef-Curated Recipes</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold gradient-text mb-2">50M+</div>
+                    <p class="text-gray-600">Meals Planned</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Loved by Home Cooks
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    See what our community has to say about Paper Chef
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white rounded-xl p-8 shadow-md hover:shadow-xl border border-gray-200">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                        "Paper Chef has completely transformed how I approach meal planning. I used to spend every Sunday afternoon planning meals and making shopping lists. Now I just snap a photo of my receipt and get a perfect week of meal plans instantly. I've saved over $200 a month on groceries by reducing food waste!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            SM
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Sarah Mitchell</p>
+                            <p class="text-gray-600 text-sm">Busy Mom & Food Blogger</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white rounded-xl p-8 shadow-md hover:shadow-xl border border-gray-200">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                        "As someone who's always intimidated by cooking, Paper Chef makes it accessible and fun. The recipes are clearly explained with beautiful photos, and knowing exactly what I need helps me feel confident in the kitchen. I've discovered dishes I never would have tried otherwise!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            JL
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">James Lopez</p>
+                            <p class="text-gray-600 text-sm">Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white rounded-xl p-8 shadow-md hover:shadow-xl border border-gray-200">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                        "The OCR technology is absolutely mind-blowing. I was skeptical at first, but it recognized every single item on my receipt perfectly. The meal plans it generates are nutritionally balanced and actually use ingredients I already have. This has saved me so much time and money!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            EP
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Emma Patel</p>
+                            <p class="text-gray-600 text-sm">Nutritionist & Wellness Coach</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card bg-white rounded-xl p-8 shadow-md hover:shadow-xl border border-gray-200">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                        "I run a small catering business and I've started using Paper Chef to help me plan menus and manage inventory. The smart suggestions have helped me reduce waste by 35% and my clients love the variety of dishes I can now offer. Best investment I've made for my business!"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                            MC
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Marco Colombo</p>
+                            <p class="text-gray-600 text-sm">Catering Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600">
+                    Everything you need to know about Paper Chef
+                </p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 md:px-8 md:py-6 bg-white hover:bg-gray-50 transition-colors duration-300 flex items-center justify-between">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 text-left">
+                            How does the receipt OCR technology work?
+                        </h3>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-4 md:px-8 md:py-6 bg-gray-50 border-t border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Our Receipt-to-Menu OCR uses advanced machine learning technology trained on thousands of grocery receipts. Simply take a clear photo of your receipt, and our system instantly recognizes every item, quantity, and brand. The technology is 99.2% accurate and works with receipts from virtually any grocery store or supermarket worldwide. Once the items are recognized, our AI cross-references them with our extensive recipe database to create personalized meal plans that use exactly what you've purchased.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 md:px-8 md:py-6 bg-white hover:bg-gray-50 transition-colors duration-300 flex items-center justify-between">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 text-left">
+                            Can I customize the meal plans to fit my dietary preferences?
+                        </h3>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-4 md:px-8 md:py-6 bg-gray-50 border-t border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Absolutely! Paper Chef allows you to set multiple dietary preferences and restrictions including vegetarian, vegan, gluten-free, keto, paleo, dairy-free, nut-free, and more. You can also exclude specific ingredients you dislike or are allergic to. Once you set your preferences, all generated meal plans will only include recipes that match your requirements. Additionally, you can manually swap recipes in your 7-day plan, adjust portion sizes, and even request recipes based on specific cooking methods or cuisines you're in the mood for.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 md:px-8 md:py-6 bg-white hover:bg-gray-50 transition-colors duration-300 flex items-center justify-between">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 text-left">
+                            Is my personal data and receipt information secure?
+                        </h3>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-4 md:px-8 md:py-6 bg-gray-50 border-t border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Yes, security and privacy are our top priorities. All data is encrypted using industry-standard 256-bit SSL encryption, both in transit and at rest. We comply with GDPR, CCPA, and other major data protection regulations. Receipt images are processed using secure servers and are never shared with third parties. You can delete your receipt history at any time, and we offer complete transparency about how your data is used. We never sell your personal information, and you have full control over your data at all times. For detailed information about our security practices, please review our privacy policy.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full px-6 py-4 md:px-8 md:py-6 bg-white hover:bg-gray-50 transition-colors duration-300 flex items-center justify-between">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 text-left">
+                            What's included in the subscription, and is there a free trial?
+                        </h3>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-4 md:px-8 md:py-6 bg-gray-50 border-t border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Paper Chef offers a 14-day free trial with full access to all premium features, including unlimited receipt uploads, access to our complete recipe library, personalized meal planning, shopping list generation, and pantry tracking. After the trial, we offer flexible subscription plans starting at $9.99/month with options to save with annual billing. Your subscription includes unlimited meal plans, recipe access, dietary customization, video tutorials, customer support, and regular updates with new recipes and features. You can cancel anytime with no penalties or hidden fees. We also offer a 30-day money-back guarantee if you're not completely satisfied.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 bg-blue-600 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1600&h=900&fit=crop&q=80" alt="Ready to get started" class="w-full h-full object-cover opacity-20">
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
+                Ready to Transform Your Cooking?
+            </h2>
+            <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Join thousands of home cooks who are saving time, reducing waste, and discovering amazing recipes with Paper Chef.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://stripe.com/checkout" class="btn-primary bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transform transition-all duration-300 shadow-lg">
+                    Start Your Free Trial
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <button class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg font-bold text-lg transform transition-all duration-300">
+                    Schedule a Demo
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Get in Touch
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Have questions? We'd love to hear from you.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 border border-gray-200">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-envelope text-2xl text-blue-600 mt-1"></i>
+                                <div>
+                                    <p class="font-semibold text-gray-900">Email</p>
+                                    <a href="mailto:hello@thepaperchef.com" class="text-blue-600 hover:text-blue-700 transition-colors duration-300">
+                                        hello@thepaperchef.com
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-map-marker-alt text-2xl text-blue-600 mt-1"></i>
+                                <div>
+                                    <p class="font-semibold text-gray-900">Address</p>
+                                    <p class="text-gray-600">San Francisco, CA, USA</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-clock text-2xl text-blue-600 mt-1"></i>
+                                <div>
+                                    <p class="font-semibold text-gray-900">Response Time</p>
+                                    <p class="text-gray-600">We typically respond within 24 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-gray-900 font-semibold mb-2">Name</label>
+                            <input type="text" placeholder="Your name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label class="block text-gray-900 font-semibold mb-2">Email</label>
+                            <input type="email" placeholder="your@email.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label class="block text-gray-900 font-semibold mb-2">Message</label>
+                            <textarea placeholder="Your message..." rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transform transition-all duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-receipt text-2xl text-blue-500"></i>
+                        <span class="text-xl font-bold text-white">Paper Chef</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Transform your grocery receipts into ready-to-cook meal plans with AI-powered technology and chef-curated recipes.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#home" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Home</a>
+                        </li>
+                        <li>
+                            <a href="#features" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Features</a>
+                        </li>
+                        <li>
+                            <a href="#benefits" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Benefits</a>
+                        </li>
+                        <li>
+                            <a href="#about" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#testimonials" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Testimonials</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Support</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#faq" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="https://blog.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Blog</a>
+                        </li>
+                        <li>
+                            <a href="privacy.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="terms.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <p class="text-gray-400">Email:</p>
+                            <a href="mailto:hello@thepaperchef.com" class="text-blue-500 hover:text-blue-400 transition-colors duration-300">
+                                hello@thepaperchef.com
+                            </a>
+                        </li>
+                        <li>
+                            <p class="text-gray-400">Location:</p>
+                            <p class="text-gray-300">San Francisco, CA, USA</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm">
+                        &copy; <span id="year">2024</span> Paper Chef. All rights reserved.
+                    </p>
+                    <div class="flex gap-6 text-sm">
+                        <a href="privacy.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Privacy Policy</a>
+                        <a href="terms.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Terms of Service</a>
+                        <a href="blog.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // FAQ Accordion
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const faqItem = toggle.closest('.faq-item');
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+                
+                // Rotate chevron icon
+                const chevron = toggle.querySelector('.fa-chevron-down');
+                if (isActive) {
+                    chevron.style.transform = 'rotate(0deg)';
+                } else {
+                    chevron.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+        
+        // Update year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.feature-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
