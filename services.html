@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="See how Paper Chef turns grocery receipts into a taste-aligned 7-day plan with pantry tracking, dietary filters, smart swaps, and focused add-on lists to cut waste and weeknight decision time.">
+    <meta name="keywords" content="meal planning, services, pantry tracking, recipe planning, grocery receipt, meal prep, cooking">
+    <meta name="author" content="Paper Chef">
+    <title>Services | Paper Chef — Receipt-to-Menu Meal Planning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        
+        .feature-card {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card {
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            transition: all 300ms ease-out;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        
+        .nav-link {
+            transition: color 300ms ease-out;
+        }
+        
+        .nav-link:hover {
+            color: #2563eb;
+        }
+        
+        .mobile-menu {
+            transition: all 300ms ease-out;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .header-sticky {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .service-item {
+            transition: all 300ms ease-out;
+        }
+        
+        .service-item:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    
+    <!-- Announcement Bar -->
+    <div class="bg-blue-600 text-white py-3 px-4 text-center text-sm md:text-base">
+        <i class="fas fa-shipping-fast mr-2"></i>Fast Worldwide Shipping (5 days delivery) • 100% Satisfaction Guarantee
+    </div>
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white header-sticky">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <i class="fas fa-receipt text-2xl text-blue-600"></i>
+                <span class="text-xl font-bold text-gray-900">Paper Chef</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html#home" class="nav-link text-gray-700 font-medium hover:text-blue-600">Home</a>
+                <a href="index.html#features" class="nav-link text-gray-700 font-medium hover:text-blue-600">Features</a>
+                <a href="services.html" class="nav-link text-gray-700 font-medium hover:text-blue-600">Services</a>
+                <a href="index.html#benefits" class="nav-link text-gray-700 font-medium hover:text-blue-600">Benefits</a>
+                <a href="index.html#about" class="nav-link text-gray-700 font-medium hover:text-blue-600">About</a>
+                <a href="index.html#testimonials" class="nav-link text-gray-700 font-medium hover:text-blue-600">Testimonials</a>
+                <a href="index.html#faq" class="nav-link text-gray-700 font-medium hover:text-blue-600">FAQ</a>
+                <a href="index.html#contact" class="nav-link text-gray-700 font-medium hover:text-blue-600">Contact</a>
+            </div>
+            
+            <!-- Search and CTA -->
+            <div class="hidden md:flex items-center gap-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search..." class="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-40">
+                    <i class="fas fa-search absolute right-3 top-3 text-gray-500"></i>
+                </div>
+                <a href="https://stripe.com/checkout" class="btn-primary bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transform transition-all duration-300">
+                    Buy Now
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-button md:hidden text-gray-900 text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-4">
+                <a href="index.html#home" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Home</a>
+                <a href="index.html#features" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Features</a>
+                <a href="services.html" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Services</a>
+                <a href="index.html#benefits" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Benefits</a>
+                <a href="index.html#about" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">About</a>
+                <a href="index.html#testimonials" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Testimonials</a>
+                <a href="index.html#faq" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">FAQ</a>
+                <a href="index.html#contact" class="nav-link text-gray-700 font-medium py-2 hover:text-blue-600">Contact</a>
+                <div class="relative pt-2">
+                    <input type="text" placeholder="Search..." class="bg-gray-100 text-gray-900 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                    <i class="fas fa-search absolute right-3 top-5 text-gray-500"></i>
+                </div>
+                <a href="https://stripe.com/checkout" class="btn-primary bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transform transition-all duration-300 text-center">
+                    Buy Now
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="services" class="relative h-screen md:h-96 lg:h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1600&h=900&fit=crop&q=80" alt="Professional kitchen services" class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
+            <p class="text-lg md:text-xl text-blue-200 mb-4 font-semibold tracking-wide">
+                From receipt to routine: a smarter kitchen week, automatically.
+            </p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
+                Services That Turn Groceries Into a Plan—Not a Guess
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed">
+                Paper Chef reads what you already bought, builds a realistic 7-day plan around it, and helps you use things up before they're forgotten—so you save time, money, and mental energy.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://stripe.com/checkout" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transform transition-all duration-300 shadow-lg">
+                    Get Started Now
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <button class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transform transition-all duration-300">
+                    Book a Walkthrough
+                    <i class="fas fa-calendar ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Core Services Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Our Core Services
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    Ten powerful services designed to transform your grocery shopping and meal planning
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- Service 1 -->
+                <div class="service-item bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg flex-shrink-0">
+                            <i class="fas fa-camera text-2xl text-blue-600"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Receipt-to-Menu Setup</h3>
+                            <p class="text-gray-700 mb-3 leading-relaxed">
+                                <span class="font-semibold">What it is:</span> Snap a photo of your grocery receipt or forward an e-receipt; we parse items, normalize brands/sizes, and load them into your pantry with quantities.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <span class="font-semibold">Why it matters:</span> Most people don't struggle to cook—they struggle to decide. Automating the jump from "what's in the bags?" to "here's your week" cuts the nightly stare-down with the fridge and reduces midweek store runs. Decision fatigue around "what to cook" is a top complaint in meal-planning threads.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-item bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div class="flex items-center justify-center w-16 h-16 bg-green-100 rounded-lg flex-shrink-0">
+                            <i class="fas fa-box-open text-2xl text-green-600"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Pantry Intelligence & Use-Up-First Logic</h3>
+                            <p class="text-gray-700 mb-3 leading-relaxed">
+                                <span class="font-semibold">What it is:</span> A living inventory that tracks freshness windows, opened items, and multi-packs; the planner schedules perishables earlier in the week and rolls leftovers forward.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <span class="font-semibold">Why it matters:</span> Households waste food because items get buried, dates aren't checked, and storage isn't optimized. Use-up-first cues and "you've got two peppers left" prompts counter the most common pantry pitfalls and overbuying.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-item bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div class="flex items-center justify-center w-16 h-16 bg-purple-100 rounded-lg flex-shrink-0">
+                            <i class="fas fa-calendar-week text-2xl text-purple-600"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Constraint-Aware Weekly Planner</h3>
+                            <p class="text-gray-700 mb-3 leading-relaxed">
+                                <span class="font-semibold">What it is:</span> A 7-day dinner plan generated around your pantry, time, and diet—diabetes-friendly, vegetarian weekdays, high-protein, spice level, "not fishy," cilantro-averse, and more.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <span class="font-semibold">Why it matters:</span> Families juggle tastes, schedules, and health goals; plans fall apart when they ignore constraints. Paper Chef keeps hard rules (allergens, diet targets) while preserving flavor, so you aren't making two separate dinners.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-item bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div class="flex items-center justify-center w-16 h-16 bg-orange-100 rounded-lg flex-shrink-0">
+                            <i class="fas fa-sync-alt text-2xl text-orange-600"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Instant Swaps & Pantry Reconciliation</h3>
+                            <p class="text-gray-700 mb-3 leading-relaxed">
+                                <span class="font-semibold">What it is:</span> Swap a recipe (or key ingredient) with one tap; we adjust the pantry and reschedule remaining items automatically.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <span class="font-semibold">Why it matters:</span> Real life changes. When soccer practice runs late or ground turkey became ground beef, the plan adapts without breaking your inventory or blowing the budget—avoiding last-minute takeout.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-item bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div class="flex items-center justify-center w-16 h-16 bg-red-100 rounded-lg flex-shrink-0">
+                            <i class="fas fa-list-check text-2xl text-red-600"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Focused Top-Up Lists (Not a Re-Shop)</h3>
+                            <p class="text-gray-700 mb-3 leading-relaxed">
+                                <span class="font-semibold">What it is:</span> A short, exact add-on list for what you don't have, grouped by aisle/section with quantities.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <span class="font-semibold">Why it matters:</span> The two biggest shopping complaints: repeat purchases of items you already own and vague lists that lead to impulse buys. A precise, pantry-aware list helps you buy only what the week needs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-item bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div class="flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-lg flex-shrink-0">
+                            <i class="fas fa-leaf text-2xl text-indigo-600"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Waste-Cutting Insights</h3>
+                            <p class="text-gray-700 mb-3 leading-relaxed">
+                                <span class="font-semibold">What it is:</span> "Use-by" alerts, leftover trackers, and a weekly "saved from waste" summary tied to your actual ingredients.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <span class="font-semibold">Why it matters:</span> Food wasted at home is expensive and avoidable; small habits—planning before shopping, using leftovers intentionally, storing correctly—deliver real savings. Paper Chef nudges those habits in-app.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="service-item bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div class="flex items-center justify-center w-16 h-16 bg-cyan-100 rounded-lg flex-shrink-0">
+                            <i class="fas fa-users text-2xl text-cyan-600"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Family Mode & Shared Kitchens</h3>
+                            <p class="text-gray-700 mb-3 leading-relaxed">
+                                <span class="font-semibold">What it is:</span> Shared pantries, assign-a-cook by day, and simple links so everyone knows "what's for dinner" and where leftovers live.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <span class="font-semibold">Why it matters:</span> Households often lose meals to miscommunication ("I thought that was for tonight" / "I gave it away"). Light coordination features protect the plan and your prep time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="service-item bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div class="flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-lg flex-shrink-0">
+                            <i class="fas fa-clock text-2xl text-yellow-600"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Prep Timeline & "Tonight at a Glance"</h3>
+                            <p class="text-gray-700 mb-3 leading-relaxed">
+                                <span class="font-semibold">What it is:</span> A Today card with cook time, steps, and any quick prep (thaw/soak), plus "tomorrow" hints.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <span class="font-semibold">Why it matters:</span> People abandon plans when the day's task is unclear or too complex. A single glance reduces mental load and helps you stick to the plan even on busy nights. Time scarcity is the #1 blocker in meal planning.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 9 -->
+                <div class="service-item bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div class="flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-lg flex-shrink-0">
+                            <i class="fas fa-snowflake text-2xl text-emerald-600"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Storage & Pantry Best-Practice Prompts</h3>
+                            <p class="text-gray-700 mb-3 leading-relaxed">
+                                <span class="font-semibold">What it is:</span> Contextual tips like "keep the fridge at 35–38°F" and "store onions/garlic outside the fridge," shown only when relevant to ingredients you've bought.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <span class="font-semibold">Why it matters:</span> Better storage extends ingredient life and reduces spoilage—your cilantro lasts longer, your berries don't go mushy, and your budget thanks you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 10 -->
+                <div class="service-item bg-white border border-gray-200 rounded-xl p-8 shadow-md hover:shadow-lg">
+                    <div class="flex items-start gap-6">
+                        <div class="flex items-center justify-center w-16 h-16 bg-pink-100 rounded-lg flex-shrink-0">
+                            <i class="fas fa-lock text-2xl text-pink-600"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Privacy & Control</h3>
+                            <p class="text-gray-700 mb-3 leading-relaxed">
+                                <span class="font-semibold">What it is:</span> Redaction of payment/loyalty details, optional auto-delete of receipt images after parsing, and editable inventory history.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                <span class="font-semibold">Why it matters:</span> Your shopping data is sensitive. We keep it scoped to your kitchen, and you stay in charge.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Service Packages Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Service Packages
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    Choose the plan that fits your kitchen and lifestyle
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Starter Package -->
+                <div class="service-card bg-white rounded-xl p-8 shadow-md hover:shadow-xl border border-gray-200">
+                    <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg mb-6">
+                        <i class="fas fa-rocket text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
+                    <p class="text-gray-600 font-semibold mb-6">Receipt-to-Menu</p>
+                    <div class="mb-8 pb-8 border-b border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            For individuals and couples who want instant plans from receipts. Includes OCR, pantry basics, 7-day planner, and focused top-up lists. Ideal for reducing duplicate buys and "what do we make tonight?" stress.
+                        </p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">Receipt OCR Technology</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">Pantry Tracking</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">7-Day Meal Plans</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">Smart Shopping Lists</span>
+                        </li>
+                    </ul>
+                    <a href="https://stripe.com/checkout" class="btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold transform transition-all duration-300 text-center">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Family Package -->
+                <div class="service-card bg-white rounded-xl p-8 shadow-md hover:shadow-xl border-2 border-blue-600 relative">
+                    <div class="absolute -top-4 left-6 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+                        Most Popular
+                    </div>
+                    <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg mb-6">
+                        <i class="fas fa-home text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Family</h3>
+                    <p class="text-gray-600 font-semibold mb-6">Shared Pantry + Preferences</p>
+                    <div class="mb-8 pb-8 border-b border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Everything in Starter plus multi-user sync, assign-a-cook, kid-friendly filters, and leftover planning. Built for busy households with varied tastes and shifting schedules.
+                        </p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">All Starter Features</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">Multi-User Sync</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">Assign-a-Cook Features</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">Leftover Planning</span>
+                        </li>
+                    </ul>
+                    <a href="https://stripe.com/checkout" class="btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold transform transition-all duration-300 text-center">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Health-Guided Package -->
+                <div class="service-card bg-white rounded-xl p-8 shadow-md hover:shadow-xl border border-gray-200">
+                    <div class="flex items-center justify-center w-16 h-16 bg-green-100 rounded-lg mb-6">
+                        <i class="fas fa-heart text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Health-Guided</h3>
+                    <p class="text-gray-600 font-semibold mb-6">Diet & Nutrition Targets</p>
+                    <div class="mb-8 pb-8 border-b border-gray-200">
+                        <p class="text-gray-700 leading-relaxed">
+                            Starter + diabetes-friendly and other goal-based templates, nutrition highlights (protein/fiber/net carbs), and compliant swaps that stay flavorful. For cooks who want structure without blandness.
+                        </p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">All Starter Features</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">Diet Templates</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">Nutrition Tracking</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span class="text-gray-700">Compliant Recipe Swaps</span>
+                        </li>
+                    </ul>
+                    <a href="https://stripe.com/checkout" class="btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold transform transition-all duration-300 text-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Common Struggles Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    What Customers Say They Struggle With
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    (And how we solve it)
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Struggle 1 -->
+                <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-8 border border-red-200">
+                    <div class="flex items-start gap-4 mb-4">
+                        <i class="fas fa-times-circle text-3xl text-red-600 flex-shrink-0"></i>
+                        <h3 class="text-xl font-bold text-gray-900">Food Waste Problem</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        "I buy fresh stuff and it goes bad before I use it."
+                    </p>
+                    <div class="bg-white rounded-lg p-4 border-l-4 border-green-500">
+                        <p class="text-green-700 font-semibold mb-2">Our Solution:</p>
+                        <p class="text-gray-700">Use-up-first scheduling and storage nudges cut waste by prioritizing perishables, with reminders tied to your plan.</p>
+                    </div>
+                </div>
+                
+                <!-- Struggle 2 -->
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-8 border border-yellow-200">
+                    <div class="flex items-start gap-4 mb-4">
+                        <i class="fas fa-times-circle text-3xl text-yellow-600 flex-shrink-0"></i>
+                        <h3 class="text-xl font-bold text-gray-900">Duplicate Purchases</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        "I keep re-buying things I already have."
+                    </p>
+                    <div class="bg-white rounded-lg p-4 border-l-4 border-green-500">
+                        <p class="text-green-700 font-semibold mb-2">Our Solution:</p>
+                        <p class="text-gray-700">Live pantry + exact top-up lists prevent duplicates and rein in impulse shopping.</p>
+                    </div>
+                </div>
+                
+                <!-- Struggle 3 -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 border border-blue-200">
+                    <div class="flex items-start gap-4 mb-4">
+                        <i class="fas fa-times-circle text-3xl text-blue-600 flex-shrink-0"></i>
+                        <h3 class="text-xl font-bold text-gray-900">Time & Decision Overload</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        "Meal planning takes forever—and I still don't know what to cook."
+                    </p>
+                    <div class="bg-white rounded-lg p-4 border-l-4 border-green-500">
+                        <p class="text-green-700 font-semibold mb-2">Our Solution:</p>
+                        <p class="text-gray-700">Plans generate from receipts in under a minute; instant swaps keep it flexible when plans change.</p>
+                    </div>
+                </div>
+                
+                <!-- Struggle 4 -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-8 border border-purple-200">
+                    <div class="flex items-start gap-4 mb-4">
+                        <i class="fas fa-times-circle text-3xl text-purple-600 flex-shrink-0"></i>
+                        <h3 class="text-xl font-bold text-gray-900">Family Preferences</h3>
+                    </div>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        "My family all wants different things."
+                    </p>
+                    <div class="bg-white rounded-lg p-4 border-l-4 border-green-500">
+                        <p class="text-green-700 font-semibold mb-2">Our Solution:</p>
+                        <p class="text-gray-700">Constraint-aware planning + simple assignments keep one plan workable for everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    How We Work
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600">
+                    At a Glance
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 border border-gray-200">
+                <div class="space-y-6">
+                    <!-- Step 1 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white font-bold text-lg">
+                                1
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Import Your Receipt</h3>
+                            <p class="text-gray-700">Photo or email your receipt — we parse items and sizes.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow -->
+                    <div class="flex justify-center">
+                        <i class="fas fa-arrow-down text-3xl text-blue-600"></i>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white font-bold text-lg">
+                                2
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Review Your Pantry</h3>
+                            <p class="text-gray-700">Quick confirm on any low-confidence lines.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow -->
+                    <div class="flex justify-center">
+                        <i class="fas fa-arrow-down text-3xl text-blue-600"></i>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white font-bold text-lg">
+                                3
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Generate a 7-Day Plan</h3>
+                            <p class="text-gray-700">Around perishables, time, and taste preferences.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow -->
+                    <div class="flex justify-center">
+                        <i class="fas fa-arrow-down text-3xl text-blue-600"></i>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white font-bold text-lg">
+                                4
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Top-Up with a Short List</h3>
+                            <p class="text-gray-700">Precise add-on list — no full re-shop needed.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow -->
+                    <div class="flex justify-center">
+                        <i class="fas fa-arrow-down text-3xl text-blue-600"></i>
+                    </div>
+                    
+                    <!-- Step 5 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-600 text-white font-bold text-lg">
+                                5
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Cook & Adjust</h3>
+                            <p class="text-gray-700">Instant swaps; leftovers auto-scheduled.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 bg-blue-600 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1600&h=900&fit=crop&q=80" alt="Ready to get started" class="w-full h-full object-cover opacity-20">
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
+                Ready for Your First "Receipt → Ready Week"?
+            </h2>
+            <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Start with the Starter plan or book a 10-minute walkthrough. Your groceries become a plan before the bags hit the floor.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://stripe.com/checkout" class="btn-primary bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transform transition-all duration-300 shadow-lg">
+                    Start Your Free Trial
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <button class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg font-bold text-lg transform transition-all duration-300">
+                    Book a Walkthrough
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-receipt text-2xl text-blue-500"></i>
+                        <span class="text-xl font-bold text-white">Paper Chef</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-4">
+                        Transform your grocery receipts into ready-to-cook meal plans with AI-powered technology and chef-curated recipes.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="index.html#home" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Home</a>
+                        </li>
+                        <li>
+                            <a href="index.html#features" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Features</a>
+                        </li>
+                        <li>
+                            <a href="services.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Services</a>
+                        </li>
+                        <li>
+                            <a href="index.html#about" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">About Us</a>
+                        </li>
+                        <li>
+                            <a href="index.html#testimonials" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Testimonials</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Support</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="index.html#faq" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="index.html#contact" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Blog</a>
+                        </li>
+                        <li>
+                            <a href="privacy.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="terms.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <p class="text-gray-400">Email:</p>
+                            <a href="mailto:hello@thepaperchef.com" class="text-blue-500 hover:text-blue-400 transition-colors duration-300">
+                                hello@thepaperchef.com
+                            </a>
+                        </li>
+                        <li>
+                            <p class="text-gray-400">Location:</p>
+                            <p class="text-gray-300">San Francisco, CA, USA</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm">
+                        &copy; <span id="year">2024</span> Paper Chef. All rights reserved.
+                    </p>
+                    <div class="flex gap-6 text-sm">
+                        <a href="privacy.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Privacy Policy</a>
+                        <a href="terms.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Terms of Service</a>
+                        <a href="index.html" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Update year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.service-card, .service-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
